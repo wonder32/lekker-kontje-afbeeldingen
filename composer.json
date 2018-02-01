@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Lka\\": ""
+    }
+  },
+  "require": {
+    "rilwis/meta-box": "^4.13"
+  }
+}
