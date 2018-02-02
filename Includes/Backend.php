@@ -16,7 +16,6 @@ class Backend {
 	public function __construct() {
 
 		$this->filter = new Filter();
-		$this->filter->add_action('rewrite_rules_array', $this, 'add_rewrite_rules');
 
 		// admin columns media
 		$this->filter->add_action('manage_media_columns', $this, 'lekker_media_columns');
@@ -44,9 +43,6 @@ class Backend {
 
 
 
-	/**
-	 * Pechhulp
-	 */
 
 	public function lekker_media_columns_content($column, $id)
 	{
@@ -54,7 +50,7 @@ class Backend {
 
 			case 'group':
 
-				$group = get_field('img_group', $id);
+				$group = rwmb_meta( 'lka_image_group', '', $id );
 				if ($group) {
 
 					echo $group;
@@ -63,10 +59,10 @@ class Backend {
 
 			case 'tag':
 
-				$type = get_field('img_tag', $id);
-				if ($type) {
+				$tag = rwmb_meta( 'lka_image_tag', '', $id );
+				if ($tag) {
 
-					echo $type;
+					echo $tag;
 				}
 
 

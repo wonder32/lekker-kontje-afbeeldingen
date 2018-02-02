@@ -46,5 +46,4 @@ function kontjes_rate_kontje() {
     }
 
     wp_send_json($data);
-
 }

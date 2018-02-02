@@ -10,14 +10,15 @@ function lekker_kontje_afbeeldingen() {
 
     global $wp_query;
 
-    $group = $wp_query->get('img_group');
-    $tag = $wp_query->get('img_tag');
-    $groups = ['vrouwen', 'mannen', 'autos', 'motoren'];
+    $group = $wp_query->get('lka_image_group');
+    $tag = $wp_query->get('lka_image_tag');
+    $groups = ['female' => 'vrouwen', 'male' => 'mannen', 'cars' => 'autos', 'motor' => 'motor'];
 
-    if (!in_array($group, $groups)) {
+    if (! ( $group = array_search($group, $groups))) {
         $tag = $group;
         $group = false;
     }
+    
 
     $args = array(
         'post_type' => 'attachment',
@@ -35,14 +36,14 @@ function lekker_kontje_afbeeldingen() {
 
     if ($group) {
         $meta[] = [
-            'key'     => 'img_group',
+            'key'     => 'lka_image_group',
             'value'   => $group,
             'compare' => '='
         ];
     }
     if ($tag) {
         $meta[] = [
-            'key'     => 'img_tag',
+            'key'     => 'lka_image_tag',
             'value'   => $tag,
             'compare' => 'like'
         ];
@@ -70,7 +71,7 @@ function lekker_kontje_afbeeldingen() {
             $orientation = $image_meta['width'] / $image_meta['height'] > 1 ? 'wide' : 'tall';
             $height = wp_is_mobile() ? '138' : '160';
 
-            $alt = get_field('img_tag', $post->ID);
+            $alt = rwmb_meta('img_tag', '', $post->ID);
             $image = wp_get_attachment_image($post->ID, array('', $height), "", array("class" => "img-responsive afbeelding-section", "rel" => "lightbox", "alt" => 'kontje, ' . $alt));
             $link = get_page_link($post->ID, false);
             $title = get_the_title($post->ID);

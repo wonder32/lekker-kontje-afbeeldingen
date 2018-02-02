@@ -37,9 +37,8 @@ class MetaBox {
 				array(
 					'id' => $prefix . 'image_orientation',
 					'name' => esc_html__( 'Image orientation', 'lekker-kontje' ),
-					'type' => 'select',
+					'type' => 'button_group',
 					'desc' => esc_html__( 'Select orientation (landscape or portrait)', 'lekker-kontje' ),
-					'placeholder' => esc_html__( 'Select an orientation', 'lekker-kontje' ),
 					'options' => array(
 						'landscape' => esc_html__( 'Landscape', 'lekker-kontje' ),
 						'portrait' => esc_html__( 'Portrait', 'lekker-kontje' )
@@ -48,14 +47,13 @@ class MetaBox {
 				array(
 					'id' => $prefix . 'image_group',
 					'name' => esc_html__( 'Image group', 'lekker-kontje' ),
-					'type' => 'select',
+					'type' => 'button_group',
 					'desc' => esc_html__( 'Select object (male. female, motocycle or car)', 'lekker-kontje' ),
-					'placeholder' => esc_html__( 'Select an Item', 'lekker-kontje' ),
 					'options' => array(
-						'male' => 'Male',
-						'female' => 'Female',
-						'cars' => 'Cars',
-						'motor' => 'Motorcycle',
+						'male' => esc_html__('Male', 'lekker-kontje' ),
+						'female' => esc_html__('Female', 'lekker-kontje' ),
+						'cars' => esc_html__('Cars', 'lekker-kontje' ),
+						'motor' => esc_html__('Motorcycle', 'lekker-kontje' ),
 					),
 					'female' => 'Female'
 				),
