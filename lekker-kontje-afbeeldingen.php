@@ -27,7 +27,7 @@ require_once 'vendor/autoload.php';
 define('LEKKERDIR', plugin_dir_path(__FILE__));
 define('LEKKERFILE', __FILE__);
 
-require_once LEKKERDIR . 'Includes/functions.php';
+
 require_once LEKKERDIR . 'Includes/image-loop.php';
 require_once LEKKERDIR . 'Includes/ajax-rating.php';
 

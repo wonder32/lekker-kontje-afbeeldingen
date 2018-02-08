@@ -11,12 +11,19 @@ namespace Lka\Includes;
 
 class Frontend {
 
+	private $filter;
+	private $registration;
+
 	public function __construct() {
 
+		global $lekkerKontje;
+		$lekkerKontje = new Image;
+		$gravity = new Gravity;
 		$this->filter = new Filter();
+		$this->registration = new Registration();
 		// add rating script
 		$this->filter->add_action('wp_enqueue_scripts', $this, 'lekker_kontjes_filter');
-
+		$this->filter->add_action('wp', $this, 'image');
 		$this->filter->run();
 
 	}
@@ -41,13 +48,20 @@ class Frontend {
 
 		// we only load the script on a page
 		if (is_attachment()) {
-			// you can rename my-plugin filter but it has to be the same as in the rows below
 			// you can rename the my-plugin.js but it should be the same as the file name
 			wp_register_script('kontjes-filter', plugin_dir_url(LEKKERFILE) . 'js/kontjes.js', array('jquery'));
 			wp_enqueue_script('kontjes-filter');
 			// now we 'give'the $value (from above) to the javascript file
 			wp_localize_script('kontjes-filter', 'kontje', $value);
 		}
+
+	}
+
+	public function image() {
+
+		global $lekkerKontje;
+		$lekkerKontje = new Image;
+		
 	}
 
 }

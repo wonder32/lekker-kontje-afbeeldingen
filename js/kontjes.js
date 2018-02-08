@@ -69,7 +69,7 @@ var kontje;
         $('div[class^=attachment-star]').click(function () {
             var rating = this.className.replace('attachment-star-', '').replace(' rated-red', '');
             rate_kontje(rating);
-            console.log(atob(kontje.ajax_url));
+            //console.log(atob(kontje.ajax_url));
         });
 
     })
