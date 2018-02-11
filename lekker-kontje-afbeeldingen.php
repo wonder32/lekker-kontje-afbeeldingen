@@ -36,7 +36,7 @@ add_shortcode('lekker-kontje-afbeeldingen', 'lekker_kontje_afbeeldingen');
 
 
 add_image_size( 'grid', '', 300, true);
-add_image_size( 'simgle', '', 600, true);
+add_image_size( 'single', '', 600, true);
 
 //see ajax rating . php
 add_action( 'wp_ajax_rate_kontje', 'kontjes_rate_kontje' ); // for loggedin users

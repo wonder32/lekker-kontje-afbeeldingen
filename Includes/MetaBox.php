@@ -63,7 +63,25 @@ class MetaBox {
 					'name' => esc_html__( 'Image tag', 'lekker-kontje' ),
 					'desc' => esc_html__( 'Add a tag: blue, big, unique.', 'lekker-kontje' ),
 					'size' => 20,
-				)
+				),
+				array(
+					'id' => $prefix . 'image_validate',
+					'name' => esc_html__( 'Image validation', 'lekker-kontje' ),
+					'type' => 'button_group',
+					'desc' => esc_html__( 'Validate image', 'lekker-kontje' ),
+					'options' => array(
+						'valid' => esc_html__( 'Validated', 'lekker-kontje' ),
+						'wait' => esc_html__( 'Waiting', 'lekker-kontje' ),
+						'incalid' => esc_html__( 'invalid', 'lekker-kontje' )
+					),
+				),
+				array(
+					'id' => $prefix . 'image_email',
+					'type' => 'text',
+					'name' => esc_html__( 'Image email', 'lekker-kontje' ),
+					'desc' => esc_html__( 'Email used to upload image.', 'lekker-kontje' ),
+					'size' => 20,
+				),
 			),
 		);
 

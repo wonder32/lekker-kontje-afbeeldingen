@@ -35,6 +35,7 @@ class Backend {
 			'author'	=>	'Author',
 			'group'	    =>	'Group',
 			'tag'	    =>	'Tag',
+			'validate'	=>	'Validated',
 			'parent'	=>	'Folder',
 			'date'		=>	'Date',
 		);
@@ -52,7 +53,6 @@ class Backend {
 
 				$group = rwmb_meta( 'lka_image_group', '', $id );
 				if ($group) {
-
 					echo $group;
 				}
 				break;
@@ -64,8 +64,14 @@ class Backend {
 
 					echo $tag;
 				}
+				break;
 
+			case 'validate':
 
+				$validate = rwmb_meta( 'lka_image_validate', '', $id );
+				if ($validate) {
+					echo $validate;
+				}
 				break;
 
 		}
@@ -77,6 +83,7 @@ class Backend {
 	public function lekker_sortable_media_columns( $columns ) {
 		$columns['tag'] = 'tag';
 		$columns['group'] = 'group';
+		$columns['validate'] = 'validate';
 
 		//To make a column 'un-sortable' remove it from the array
 		//unset($columns['date']);
@@ -87,9 +94,21 @@ class Backend {
 
 
 	public function lekker_sortable_media_columns_function( $vars ) {
-		if ( isset( $vars['orderby'] ) && 'Width' == $vars['orderby'] ) {
+		if ( isset( $vars['orderby'] ) && 'group' == $vars['orderby'] ) {
 			$vars = array_merge( $vars, array(
-				'meta_key' => 'img_group',
+				'meta_key' => 'lka_image_group',
+				'orderby' => 'meta_value_num'
+			) );
+		}
+		if ( isset( $vars['orderby'] ) && 'tag' == $vars['orderby'] ) {
+			$vars = array_merge( $vars, array(
+				'meta_key' => 'lka_image_tag',
+				'orderby' => 'meta_value_num'
+			) );
+		}
+		if ( isset( $vars['orderby'] ) && 'validate' == $vars['orderby'] ) {
+			$vars = array_merge( $vars, array(
+				'meta_key' => 'lka_image_validate',
 				'orderby' => 'meta_value_num'
 			) );
 		}
