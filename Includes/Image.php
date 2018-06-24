@@ -15,6 +15,12 @@ class Image {
 	private $next;
 	private $previous;
 	private $rating;
+	private $orientation;
+	private $group;
+	private $description;
+	private $tag;
+	private $validate;
+	private $email;
 
 	public function __construct() {
 
@@ -23,6 +29,13 @@ class Image {
 			$this->previous = $this->pu_adjacent_image_link();
 			$this->next     = $this->pu_adjacent_image_link(true);
 			$this->rating   = $this->retrieveRating($post);
+			$this->orientation   = get_post_meta($post->ID, 'lka_image_orientation', true);
+			$this->group   = get_post_meta($post->ID, 'lka_image_group', true);
+			$this->tag     = get_post_meta($post->ID, 'lka_image_tag', true);
+			$this->email   = get_post_meta($post->ID, 'lka_image_email', true);
+			$this->validate   = get_post_meta($post->ID, 'lka_image_validate', true);
+			$this->description   = apply_filters( 'the_description' , $post->post_excerpt );
+
 		}
 	}
 
@@ -45,6 +58,13 @@ class Image {
 	 */
 	public function getRating() {
 		return $this->rating;
+	}
+
+	/**
+	 * @return mixed|void
+	 */
+	public function getDescription() {
+		return $this->description;
 	}
 
 	private function retrieveRating($post) {
@@ -89,5 +109,42 @@ class Image {
 		}
 
 		return get_the_permalink( $attachment_id );
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getEmail() {
+		if (strpos($this->email, 'otvanger') === false) {
+			return $this->email;
+		}
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getGroup() {
+		return $this->group;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getTag() {
+		return $this->tag;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getOrientation() {
+		return $this->orientation;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getValidate() {
+		return $this->validate;
 	}
 }

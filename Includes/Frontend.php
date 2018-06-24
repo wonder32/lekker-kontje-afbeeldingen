@@ -30,6 +30,10 @@ class Frontend {
 
 	public function lekker_kontjes_filter()    {
 
+		if (is_search() || is_404()) {
+			return;
+		}
+
 		global $post;
 
 		// first we create the array and put the admin-ajax.php in it

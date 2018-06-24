@@ -32,7 +32,7 @@ var kontje;
                 // Here Loader animation
             },
             success : function( response ) {
-                if (response.response != '') {
+                if (response.response !== '') {
                     console.table(response.data);
                     console.log(response.response);
                     $('div[class^=attachment-star-]').removeClass('rated-red');
@@ -41,18 +41,17 @@ var kontje;
                     for (i = 1; i <= rating; i++) {
                         $('.attachment-star-' + i).addClass('rated-red');
                     }
-                    if (response.response == 'failure') {
+                    if (response.response === 'failure') {
                         stars = 'je mag 1x stemmen';
                     } else {
-                        for (i = 1; i <= 5; i++) {
-                            stars += '<span class="rating-star-' + i + '">' + i + '</span>' + response.data[0][i];
-                        }
+                        var number = parseInt($('td#rate-' + rating).html()) + 1;
+                        $('td#rate-' + rating).html(number + '&check;');
                     }
 
                     // console.log(response.data[0][1]);
 
                     $('#attachment-rating').addClass('rating-red');
-                    $('#attachment-rating').html(stars);
+
                 }
 
             }

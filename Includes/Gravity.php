@@ -19,6 +19,8 @@ class Gravity {
 
 		// first we add a random number to the empty form
 		$this->filter->add_action('gform_pre_submission_1', $this, 'add_random_value');
+		// Set upload field
+		$this->filter->add_filter('gform_field_input_1_12', $this, 'accept_images', 30);
 
 		$this->filter->run();
 	}
@@ -34,6 +36,21 @@ class Gravity {
 				$_POST["input_14"] = $random_id;
 			}
 		return $form;
+	}
+
+	/**
+	 * Set upload field
+	 *
+	 * Changes the upload field to have android 'accept' attribute
+	 *
+	 * @param $input
+	 *
+	 * @return string
+	 */
+	public function accept_images($input) {
+
+		$input = '<input name="input_12" id="input_1_12" type="file" class="large" aria-describedby="extensions_message_1_12" onchange="javascript:gformValidateFileSize( this, 5242880 );" tabindex="2" accept="images/*"  capture="camera">';
+		return $input;
 	}
 
 }

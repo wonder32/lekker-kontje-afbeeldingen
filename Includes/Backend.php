@@ -95,21 +95,57 @@ class Backend {
 
 	public function lekker_sortable_media_columns_function( $vars ) {
 		if ( isset( $vars['orderby'] ) && 'group' == $vars['orderby'] ) {
-			$vars = array_merge( $vars, array(
-				'meta_key' => 'lka_image_group',
-				'orderby' => 'meta_value_num'
-			) );
+			$vars = array_merge( $vars, array('meta_query' => array(
+				'relation' => 'OR',
+				array(
+					'key' => 'lka_image_group',
+					'compare' => 'NOT EXISTS', // doesn't work
+				     'value' => 'lka_image_group'
+				),
+				array(
+					'key' => 'lka_image_group',
+					'value'   => array(''),
+					'compare' => 'NOT IN'
+				)
+			),
+//			'meta_key' => 'lka_image_group',
+			'orderby' => 'meta_value'
+			));
 		}
 		if ( isset( $vars['orderby'] ) && 'tag' == $vars['orderby'] ) {
-			$vars = array_merge( $vars, array(
-				'meta_key' => 'lka_image_tag',
-				'orderby' => 'meta_value_num'
+			$vars = array_merge( $vars, array('meta_query' => array(
+				'relation' => 'OR',
+				array(
+					'key' => 'lka_image_tag',
+					'compare' => 'NOT EXISTS', // doesn't work
+					'value' => 'lka_image_tag'
+				),
+				array(
+					'key' => 'lka_image_tag',
+					'value'   => array(''),
+					'compare' => 'NOT IN'
+				)
+			),
+//			'meta_key' => 'lka_image_tag',
+				'orderby' => 'meta_value'
 			) );
 		}
 		if ( isset( $vars['orderby'] ) && 'validate' == $vars['orderby'] ) {
-			$vars = array_merge( $vars, array(
-				'meta_key' => 'lka_image_validate',
-				'orderby' => 'meta_value_num'
+			$vars = array_merge( $vars, array('meta_query' => array(
+				'relation' => 'OR',
+				array(
+					'key' => 'lka_image_validate',
+					'compare' => 'NOT EXISTS', // doesn't work
+					'value' => 'lka_image_validate'
+				),
+				array(
+					'key' => 'lka_image_validate',
+					'value'   => array(''),
+					'compare' => 'NOT IN'
+				)
+			),
+//				'meta_key' => 'lka_image_validate',
+				'orderby' => 'meta_value'
 			) );
 		}
 		return $vars;

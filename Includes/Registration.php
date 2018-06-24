@@ -141,7 +141,7 @@ class Registration {
 
 
 			$email = update_post_meta( $entry[13], 'lka_image_email', $entry[2] );
-			$validate = update_post_meta( $entry[13], 'lka_image_validate', 'wait' );
+			$validate = update_post_meta( $entry[13], 'lka_image_validate', 'valid' );
 			$validate = update_post_meta( $entry[13], 'lka_image_orientation', $entry['size'] );
 			$result = \GFAPI::update_entry_field( $entry['id'], 15, 'y12o' );
 //		}
