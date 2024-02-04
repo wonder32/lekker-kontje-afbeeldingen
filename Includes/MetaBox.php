@@ -72,7 +72,7 @@ class MetaBox {
 					'options' => array(
 						'valid' => esc_html__( 'Validated', 'lekker-kontje' ),
 						'wait' => esc_html__( 'Waiting', 'lekker-kontje' ),
-						'incalid' => esc_html__( 'invalid', 'lekker-kontje' )
+						'invalid' => esc_html__( 'invalid', 'lekker-kontje' )
 					),
 				),
 				array(

@@ -18,7 +18,7 @@ function lekker_kontje_afbeeldingen() {
         $tag = $group;
         $group = false;
     }
-    
+
 
 
     $args = array(
@@ -50,10 +50,16 @@ function lekker_kontje_afbeeldingen() {
         ];
     }
 
+    $meta[] = [
+        'key'     => 'lka_image_validate',
+        'value'   => 'invalid',
+        'compare' => '!='
+    ];
+
     if (!empty($meta)) {
         $args['meta_query'] = $meta;
     }
-       
+
 
     $classes = '';
     $classes .= !empty($tag) ? ' tag-' . $tag : '';
