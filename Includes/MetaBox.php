@@ -82,6 +82,17 @@ class MetaBox {
 					'desc' => esc_html__( 'Email used to upload image.', 'lekker-kontje' ),
 					'size' => 20,
 				),
+				array(
+					'id' => $prefix . 'image_focus',
+					'name' => esc_html__( 'Image focus', 'lekker-kontje' ),
+					'type' => 'button_group',
+					'desc' => esc_html__( 'Set focus point', 'lekker-kontje' ),
+					'options' => array(
+						'top' => esc_html__( 'Top', 'lekker-kontje' ),
+						'center' => esc_html__( 'Midden', 'lekker-kontje' ),
+						'bottom' => esc_html__( 'Onder', 'lekker-kontje' )
+					),
+				),
 			),
 		);
 

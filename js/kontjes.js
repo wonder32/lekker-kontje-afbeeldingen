@@ -9,11 +9,13 @@ var kontje;
 
     'use strict';
 
+    var console = window.console;
+
     // the ajax request function
     // page clicked should match the words in all lines with (4)
     function rate_kontje(rating) {
 
-        jQuery.ajax({
+        $.ajax({
             // we get my_plugin.ajax_url from php, ajax_url was the key the url the value
             url : atob(kontje.ajax_url),
             type : 'post',
@@ -43,6 +45,8 @@ var kontje;
                     }
                     if (response.response === 'failure') {
                         stars = 'je mag 1x stemmen';
+                        $('image-frame').append('<div class="vote-once">' + stars + '</div>');
+
                     } else {
                         var number = parseInt($('td#rate-' + rating).html()) + 1;
                         $('td#rate-' + rating).html(number + '&check;');
@@ -63,7 +67,7 @@ var kontje;
      *      DOCUMENT READY
      */
 
-    jQuery(document).ready(function() {
+    $(document).ready(function() {
 
         $('div[class^=attachment-star]').click(function () {
             var rating = this.className.replace('attachment-star-', '').replace(' rated-red', '');
@@ -71,6 +75,6 @@ var kontje;
             //console.log(atob(kontje.ajax_url));
         });
 
-    })
+    });
 
 })(jQuery, this);

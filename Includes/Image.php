@@ -19,6 +19,7 @@ class Image {
 	private $group;
 	private $description;
 	private $tag;
+	private $focus;
 	private $validate;
 	private $email;
 
@@ -33,6 +34,7 @@ class Image {
 			$this->group   = get_post_meta($post->ID, 'lka_image_group', true);
 			$this->tag     = get_post_meta($post->ID, 'lka_image_tag', true);
 			$this->email   = get_post_meta($post->ID, 'lka_image_email', true);
+			$this->focus   = get_post_meta($post->ID, 'lka_image_focus', true);
 			$this->validate   = get_post_meta($post->ID, 'lka_image_validate', true);
 			$this->description   = apply_filters( 'the_description' , $post->post_excerpt );
 
@@ -65,6 +67,14 @@ class Image {
 	 */
 	public function getDescription() {
 		return $this->description;
+	}
+	
+	/**
+	 * @return mixed|void
+	 */
+	public function getFocus() {
+
+		return $this->focus;
 	}
 
 	private function retrieveRating($post) {
